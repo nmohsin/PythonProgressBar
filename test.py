@@ -18,10 +18,17 @@ def old():
     print
 
 def main():
-    b = SimpleBar("Download progress {0}%")
-    for i in range(10):
-        b.update(10 * i)
-        time.sleep(2)
+    s = "Download progress: [{0}%]"
+    messages = [(s + '.' * i) for i in range(4)]
+    bar = SimpleBar()
+    
+    for i in range(40):
+        percentage = i/4 * 10
+        m = messages[i % 4]
+        bar.update(m, percentage)
+        time.sleep(.5)
+
+    
     print
 
 
